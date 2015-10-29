@@ -10,6 +10,7 @@ public class FirstGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 	//test
+	//another test
 
 	@Override
 	public void create () {
