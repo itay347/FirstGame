@@ -7,8 +7,8 @@ import com.itayandtamir.game.FirstGame;
 
 
 public class MenuState extends State {
-    Texture Background;
-    Texture Button;
+    private Texture Background;
+    private Texture Button;
 
 
     public MenuState(GameStateManager gsm) {
@@ -21,7 +21,7 @@ public class MenuState extends State {
     public void handleInput() {
         if (Gdx.input.justTouched()){
             gsm.set(new PlayState(gsm));
-            despose();
+            dispose();
         }
     }
 
@@ -38,7 +38,7 @@ public class MenuState extends State {
         sb.end();
     }
 
-    public void despose(){
+    public void dispose(){
         Background.dispose();
         Button.dispose();
     }

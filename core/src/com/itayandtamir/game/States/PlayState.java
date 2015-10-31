@@ -12,7 +12,7 @@ public class PlayState extends State {
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
-        boat = new Boat((FirstGame.WIDTH / 2) -46 ,0);
+        boat = new Boat((FirstGame.WIDTH / 2) - 46 ,0);
     }
 
     @Override
