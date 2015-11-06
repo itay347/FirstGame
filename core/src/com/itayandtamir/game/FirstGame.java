@@ -3,19 +3,16 @@ package com.itayandtamir.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.itayandtamir.game.States.GameStateManager;
 import com.itayandtamir.game.States.MenuState;
 
 public class FirstGame extends ApplicationAdapter {
-	private SpriteBatch batch;
-	Texture img;
 	public static final int WIDTH = 480;
 	public static final int HEIGHT = 800;
+	public static final String TITLE = "First Game";
 
-	public static final String TITLE = "FirstGame";
-
+	private SpriteBatch batch;
 	private GameStateManager gsm;
 
 	@Override

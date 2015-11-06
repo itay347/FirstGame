@@ -2,12 +2,9 @@ package com.itayandtamir.game.States;
 
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 import java.util.Stack;
 
-
 public class GameStateManager {
-
     private Stack<State> states;
 
     public GameStateManager(){
@@ -19,11 +16,11 @@ public class GameStateManager {
     }
 
     public void pop(){
-        states.pop();
+        states.pop().dispose();
     }
 
     public void set(State state){
-        states.pop();
+        states.pop().dispose();
         states.push(state);
     }
 
