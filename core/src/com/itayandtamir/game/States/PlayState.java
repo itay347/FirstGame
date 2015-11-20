@@ -20,7 +20,7 @@ public class PlayState extends State {
     public PlayState(GameStateManager gsm) {
         super(gsm);
         boat = new Boat(FirstGame.WIDTH / 2 - 46 ,BOAT_Y_AXIS_START);
-        background = new Texture("BackgroundPlayV1.png");
+        background = new Texture("BackgroundPlay.png");
     }
 
     @Override
