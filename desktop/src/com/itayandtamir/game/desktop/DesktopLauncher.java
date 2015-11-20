@@ -8,9 +8,9 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 //		System.setProperty("user.name", "Tamir");
-		config.title = FirstGame.TITLE;
-		config.width = FirstGame.WIDTH;
-		config.height = FirstGame.HEIGHT;
+		config.title = "The Boat";
+		config.width = 480;
+		config.height = 800;
 		new LwjglApplication(new FirstGame(), config);
 	}
 }

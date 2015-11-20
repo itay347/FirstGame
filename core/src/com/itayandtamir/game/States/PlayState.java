@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.itayandtamir.game.FirstGame;
 import com.itayandtamir.game.Sprites.Boat;
 import com.badlogic.gdx.math.Rectangle;
 
@@ -19,7 +18,7 @@ public class PlayState extends State {
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
-        boat = new Boat(FirstGame.WIDTH / 2 - 46 ,BOAT_Y_AXIS_START);
+        boat = new Boat(Gdx.graphics.getWidth() / 2 - 46 ,BOAT_Y_AXIS_START);
         background = new Texture("BackgroundPlay.png");
     }
 
