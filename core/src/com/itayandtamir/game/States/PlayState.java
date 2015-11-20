@@ -44,7 +44,7 @@ public class PlayState extends State {
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
-        sb.draw(background, 0, 0);
+        sb.draw(background, 0, 0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         sb.draw(boat.getTexture(), boat.getPosition().x, boat.getPosition().y);
         sb.end();
     }
