@@ -2,6 +2,7 @@ package com.itayandtamir.game.States;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.itayandtamir.game.FirstGame;
 
 public abstract class State {
     protected GameStateManager gsm;
@@ -10,6 +11,7 @@ public abstract class State {
     protected State(GameStateManager gsm){
         this.gsm = gsm;
         cam = new OrthographicCamera();
+        cam.setToOrtho(false, FirstGame.WIDTH, FirstGame.HEIGHT);
     }
 
     protected abstract void handleInput();

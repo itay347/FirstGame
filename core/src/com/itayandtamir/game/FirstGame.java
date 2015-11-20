@@ -8,6 +8,9 @@ import com.itayandtamir.game.States.GameStateManager;
 import com.itayandtamir.game.States.MenuState;
 
 public class FirstGame extends ApplicationAdapter {
+    public static final int WIDTH = 480;
+    public static final int HEIGHT = 800;
+
 	private SpriteBatch batch;
 	private GameStateManager gsm;
 

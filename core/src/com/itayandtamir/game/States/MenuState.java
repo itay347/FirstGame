@@ -28,9 +28,10 @@ public class MenuState extends State {
 
     @Override
     public void render(SpriteBatch sb) {
+        sb.setProjectionMatrix(cam.combined);
         sb.begin();
-        sb.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        sb.draw(playButton, Gdx.graphics.getWidth() / 2 - playButton.getWidth() / 2, Gdx.graphics.getHeight() / 2 - playButton.getHeight() / 2);
+        sb.draw(background, 0, 0, cam.viewportWidth, cam.viewportHeight);
+        sb.draw(playButton, cam.viewportWidth / 2 - playButton.getWidth() / 2, cam.viewportHeight / 2 - playButton.getHeight() / 2);
         sb.end();
     }
 
