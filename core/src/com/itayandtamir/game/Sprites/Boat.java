@@ -11,7 +11,7 @@ public class Boat {
 
     public Boat(float x, float y){
         position = new Vector2(x, y);
-        velocity = new Vector2(0, 10);
+        velocity = new Vector2(0, 50);
         texture = new Texture("Boat.png");
     }
 
