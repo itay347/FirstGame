@@ -24,8 +24,6 @@ public class PlayState extends State {
         proportion = new Vector2(cam.viewportWidth / Gdx.graphics.getWidth(), cam.viewportHeight / Gdx.graphics.getHeight());
         boat = new Boat(cam.viewportWidth / 2 - 46, BOAT_Y_AXIS_START);
         background = new Texture("BackgroundPlay.png");
-
-
     }
 
     @Override
@@ -45,7 +43,7 @@ public class PlayState extends State {
     public void update(float dt) {
         handleInput();
         boat.update(dt);
-        cam.position.set(cam.viewportWidth / 2, 350, 0);
+        cam.position.set(cam.viewportWidth / 2, 350,0);
         cam.translate(0, boat.getPosition().y);
         cam.update();
     }
