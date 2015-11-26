@@ -7,18 +7,20 @@ import com.badlogic.gdx.math.Vector2;
 import com.itayandtamir.game.FirstGame;
 import com.itayandtamir.game.Sprites.Boat;
 import com.badlogic.gdx.math.Rectangle;
+import com.itayandtamir.game.Sprites.Obstacle;
 
 public class PlayState extends State {
     private static final int BOAT_Y_AXIS_START = 50;
     private static final int BOAT_Y_AXIS_OFFSET = FirstGame.HEIGHT / 2 - BOAT_Y_AXIS_START;
-    private static final Rectangle LANE_LEFT = new Rectangle(0, 0, FirstGame.WIDTH / 3, FirstGame.HEIGHT);
-    private static final Rectangle LANE_MIDDLE = new Rectangle(FirstGame.WIDTH / 3, 0, FirstGame.WIDTH / 3, FirstGame.HEIGHT);
-    private static final Rectangle LANE_RIGHT = new Rectangle(FirstGame.WIDTH / 3 * 2, 0, FirstGame.WIDTH / 3, FirstGame.HEIGHT);
+    public static final Rectangle LANE_LEFT = new Rectangle(0, 0, FirstGame.WIDTH / 3, FirstGame.HEIGHT);
+    public static final Rectangle LANE_MIDDLE = new Rectangle(FirstGame.WIDTH / 3, 0, FirstGame.WIDTH / 3, FirstGame.HEIGHT);
+    public static final Rectangle LANE_RIGHT = new Rectangle(FirstGame.WIDTH / 3 * 2, 0, FirstGame.WIDTH / 3, FirstGame.HEIGHT);
 
     private Texture background;
     private Boat boat;
     private Vector2 proportion;
     private Vector2 backgroundPos1, backgroundPos2;
+    private Obstacle[] obstacles = new Obstacle[3];
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
