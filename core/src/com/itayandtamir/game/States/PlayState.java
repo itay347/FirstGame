@@ -29,6 +29,10 @@ public class PlayState extends State {
         background = new Texture("BackgroundPlay.png");
         backgroundPos1 = new Vector2(0, 0);
         backgroundPos2 = new Vector2(0, background.getHeight());
+        obstacles[0] = new Obstacle(cam.position.y);
+        obstacles[1] = new Obstacle(cam.position.y);
+        obstacles[2] = new Obstacle(cam.position.y);
+
     }
 
     @Override
@@ -48,6 +52,7 @@ public class PlayState extends State {
     public void update(float dt) {
         handleInput();
         updateBackground();
+        updateObstacles();
         boat.update(dt);
         cam.position.set(cam.viewportWidth / 2, boat.getPosition().y + BOAT_Y_AXIS_OFFSET, 0);
         cam.update();
@@ -60,6 +65,9 @@ public class PlayState extends State {
         sb.draw(background, backgroundPos1.x, backgroundPos1.y, cam.viewportWidth, cam.viewportHeight);
         sb.draw(background, backgroundPos2.x, backgroundPos2.y, cam.viewportWidth, cam.viewportHeight);
         sb.draw(boat.getTexture(), boat.getPosition().x, boat.getPosition().y);
+        sb.draw(obstacles[0].getTexture(), obstacles[0].getPos().x, obstacles[0].getPos().y);
+        sb.draw(obstacles[1].getTexture(), obstacles[1].getPos().x, obstacles[1].getPos().y);
+        sb.draw(obstacles[2].getTexture(), obstacles[2].getPos().x, obstacles[2].getPos().y);
         sb.end();
     }
 
@@ -74,5 +82,21 @@ public class PlayState extends State {
             backgroundPos1.add(0, background.getHeight() * 2);
         if(cam.position.y - cam.viewportHeight / 2 > backgroundPos2.y + background.getHeight())
             backgroundPos2.add(0, background.getHeight() * 2);
+    }
+
+    private void updateObstacles(){
+        if(cam.position.y - cam.viewportHeight / 2 > obstacles[0].getPos().y + obstacles[0].getTexture().getHeight()) {
+            obstacles[0].getPos().add(0, background.getHeight() + obstacles[0].getTexture().getHeight());
+            obstacles[0].updatePostition();
+        }
+        if(cam.position.y - cam.viewportHeight / 2 > obstacles[1].getPos().y + obstacles[1].getTexture().getHeight()) {
+            obstacles[1].getPos().add(0, background.getHeight() + obstacles[1].getTexture().getHeight());
+            obstacles[1].updatePostition();
+        }
+        if(cam.position.y - cam.viewportHeight / 2 > obstacles[2].getPos().y + obstacles[2].getTexture().getHeight()) {
+            obstacles[2].getPos().add(0, background.getHeight() + obstacles[2].getTexture().getHeight());
+            obstacles[2].updatePostition();
+        }
+
     }
 }
