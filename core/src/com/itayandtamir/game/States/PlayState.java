@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import com.itayandtamir.game.FirstGame;
 import com.itayandtamir.game.Sprites.Boat;
 import com.badlogic.gdx.math.Rectangle;
@@ -15,28 +16,29 @@ public class PlayState extends State {
     public static final Rectangle LANE_LEFT = new Rectangle(0, 0, FirstGame.WIDTH / 3, FirstGame.HEIGHT);
     public static final Rectangle LANE_MIDDLE = new Rectangle(FirstGame.WIDTH / 3, 0, FirstGame.WIDTH / 3, FirstGame.HEIGHT);
     public static final Rectangle LANE_RIGHT = new Rectangle(FirstGame.WIDTH / 3 * 2, 0, FirstGame.WIDTH / 3, FirstGame.HEIGHT);
+    private static final int OBSTACLE_COUNT = 3;
+//    private static final int OBSTACLE_Y_OFFSET = 50;
 
     private Texture background;
     private Boat boat;
-    private Vector2 proportion;
     private Vector2 backgroundPos1, backgroundPos2;
-    private Obstacle[] obstacles;
+    private Array<Obstacle> obstacles;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
-        proportion = new Vector2(cam.viewportWidth / Gdx.graphics.getWidth(), cam.viewportHeight / Gdx.graphics.getHeight());
         boat = new Boat(cam.viewportWidth / 2 - 46, BOAT_Y_AXIS_START);
         background = new Texture("BackgroundPlay.png");
         backgroundPos1 = new Vector2(0, 0);
         backgroundPos2 = new Vector2(0, background.getHeight());
-        obstacles = new Obstacle[3];
-        for (int i = 0; i < obstacles.length; i++)
-            obstacles[i] = new Obstacle(cam.position.y);
+        obstacles = new Array<Obstacle>();
+        for (int i = 1; i <= OBSTACLE_COUNT; i++)
+            obstacles.add(new Obstacle(cam.position.y + (FirstGame.HEIGHT / 2) * i));
     }
 
     @Override
     public void handleInput() {
         if(Gdx.input.justTouched()){
+            Vector2 proportion = new Vector2(cam.viewportWidth / Gdx.graphics.getWidth(), cam.viewportHeight / Gdx.graphics.getHeight());
             Vector2 pressPos = new Vector2(Gdx.input.getX() * proportion.x, Gdx.input.getY() * proportion.y);
             if(LANE_LEFT.contains(pressPos))
                 boat.setLane(LANE_LEFT);
@@ -64,8 +66,8 @@ public class PlayState extends State {
         sb.draw(background, backgroundPos1.x, backgroundPos1.y, cam.viewportWidth, cam.viewportHeight);
         sb.draw(background, backgroundPos2.x, backgroundPos2.y, cam.viewportWidth, cam.viewportHeight);
         sb.draw(boat.getTexture(), boat.getPosition().x, boat.getPosition().y);
-        for (int i = 0; i < obstacles.length; i++)
-            sb.draw(obstacles[i].getTexture(), obstacles[i].getPos().x, obstacles[i].getPos().y);
+        for (Obstacle obs : obstacles)
+            sb.draw(obs.getTexture(), obs.getPos().x, obs.getPos().y);
         sb.end();
     }
 
@@ -73,6 +75,8 @@ public class PlayState extends State {
     public void dispose(){
         boat.dispose();
         background.dispose();
+        for (Obstacle obs : obstacles)
+            obs.dispose();
     }
 
     private void updateBackground(){
@@ -83,10 +87,10 @@ public class PlayState extends State {
     }
 
     private void updateObstacles(){
-        for (int i = 0; i < obstacles.length; i++) {
-            if (cam.position.y - cam.viewportHeight / 2 > obstacles[i].getPos().y + obstacles[i].getTexture().getHeight()) {
-                obstacles[i].getPos().add(0, background.getHeight() + obstacles[i].getTexture().getHeight());
-                obstacles[i].updatePosition();
+        for (Obstacle obs : obstacles) {
+            if (cam.position.y - cam.viewportHeight / 2 > obs.getPos().y + obs.getTexture().getHeight()) {
+                obs.getPos().add(0, background.getHeight() / 2 * OBSTACLE_COUNT + obs.getTexture().getHeight());
+                obs.updatePosition();
             }
         }
     }
