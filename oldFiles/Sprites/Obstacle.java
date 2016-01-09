@@ -2,7 +2,6 @@ package com.itayandtamir.game.Sprites;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
-import com.itayandtamir.game.FirstGame;
 import com.itayandtamir.game.States.PlayState;
 
 import java.util.Random;
