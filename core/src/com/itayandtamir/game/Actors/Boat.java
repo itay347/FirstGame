@@ -14,9 +14,9 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 
 public class Boat extends Actor {
 
-    private TextureRegion textureRegion;
-
-    private Vector2 velocity;
+    private static final float STARTING_Y_POSITION = FirstGame.WORLD_HEIGHT * 0.15f; //Aligned to the center of the boat
+    private static final float SPEED = 100f;
+    private static final float LANE_SWITCH_DURATION = 0.2f;
 
     enum Lane {
         RIGHT(FirstGame.WORLD_WIDTH / 2 + FirstGame.WORLD_WIDTH / 3),
@@ -31,8 +31,10 @@ public class Boat extends Actor {
         }
     }
 
+    private TextureRegion textureRegion;
+    private Vector2 velocity;
     private Lane lane;
-    private boolean moving;
+    private boolean switchingLane;
 
     public Boat(Stage stage) {
         textureRegion = new TextureRegion(Assets.boat);
@@ -40,10 +42,10 @@ public class Boat extends Actor {
         setWidth(textureRegion.getRegionWidth());
         setHeight(textureRegion.getRegionHeight());
 
-        velocity = new Vector2(0, 100);
+        velocity = new Vector2(0, SPEED);
         lane = Lane.MIDDLE;
-        moving = false;
-        setPosition(stage.getWidth() / 2, stage.getHeight() * 0.15f, Align.center);
+        switchingLane = false;
+        setPosition(lane.x, STARTING_Y_POSITION, Align.center);
     }
 
     @Override
@@ -61,7 +63,7 @@ public class Boat extends Actor {
     }
 
     public void moveLeft() {
-        if (!moving) {
+        if (!switchingLane) {
             if (lane == Lane.MIDDLE) {
                 lane = Lane.LEFT;
                 applyMoveAction(-1);
@@ -74,7 +76,7 @@ public class Boat extends Actor {
     }
 
     public void moveRight() {
-        if (!moving) {
+        if (!switchingLane) {
             if (lane == Lane.MIDDLE) {
                 lane = Lane.RIGHT;
                 applyMoveAction(1);
@@ -91,16 +93,16 @@ public class Boat extends Actor {
                 run(new Runnable() {
                     @Override
                     public void run() {
-                        moving = true;
+                        switchingLane = true;
                     }
                 }),
 
-                Actions.moveBy(lane.width * direction, 0, 0.2f),
+                Actions.moveBy(lane.width * direction, 0, LANE_SWITCH_DURATION),
 
                 run(new Runnable() {
                     @Override
                     public void run() {
-                        moving = false;
+                        switchingLane = false;
                     }
                 })));
     }
