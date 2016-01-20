@@ -23,8 +23,8 @@ public class PlayScreen extends ScreenAdapter {
     public PlayScreen() {
         stage = new Stage(new StretchViewport(FirstGame.WORLD_WIDTH, FirstGame.WORLD_HEIGHT), Assets.batch);
 
-        backgrounds = new PlayBackgrounds(stage);
-        boat = new Boat(stage);
+        backgrounds = new PlayBackgrounds();
+        boat = new Boat();
 
         stage.addActor(backgrounds);
         stage.addActor(boat);

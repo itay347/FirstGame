@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Align;
 import com.itayandtamir.game.Assets;
@@ -36,7 +35,7 @@ public class Boat extends Actor {
     private Lane lane;
     private boolean switchingLane;
 
-    public Boat(Stage stage) {
+    public Boat() {
         textureRegion = new TextureRegion(Assets.boat);
 
         setWidth(textureRegion.getRegionWidth());

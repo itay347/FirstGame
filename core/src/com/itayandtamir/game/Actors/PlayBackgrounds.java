@@ -13,9 +13,7 @@ public class PlayBackgrounds extends Group {
 
     private Image background1, background2;
 
-    public PlayBackgrounds(Stage stage) {
-        this.stage = stage;
-
+    public PlayBackgrounds() {
         background1 = new Image(Assets.backgroundPlay);
         background1.setPosition(0, 0);
         background2 = new Image(Assets.backgroundPlay);
