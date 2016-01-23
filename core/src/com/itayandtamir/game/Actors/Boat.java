@@ -17,19 +17,6 @@ public class Boat extends Actor {
     private static final float SPEED = 100f;
     private static final float LANE_SWITCH_DURATION = 0.2f;
 
-    enum Lane {
-        RIGHT(FirstGame.WORLD_WIDTH / 2 + FirstGame.WORLD_WIDTH / 3),
-        MIDDLE(FirstGame.WORLD_WIDTH / 2),
-        LEFT(FirstGame.WORLD_WIDTH / 2 - FirstGame.WORLD_WIDTH / 3);
-
-        private float x;
-        private final float width = FirstGame.WORLD_WIDTH / 3;
-
-        Lane(float x) {
-            this.x = x;
-        }
-    }
-
     private TextureRegion textureRegion;
     private Vector2 velocity;
     private Lane lane;
@@ -37,7 +24,6 @@ public class Boat extends Actor {
 
     public Boat() {
         textureRegion = new TextureRegion(Assets.boat);
-
         setWidth(textureRegion.getRegionWidth());
         setHeight(textureRegion.getRegionHeight());
 
