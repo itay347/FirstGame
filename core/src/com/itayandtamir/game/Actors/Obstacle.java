@@ -3,6 +3,7 @@ package com.itayandtamir.game.Actors;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.utils.Align;
 import com.itayandtamir.game.Assets;
 
 public class Obstacle extends Actor {
@@ -14,11 +15,15 @@ public class Obstacle extends Actor {
         setWidth(textureRegion.getRegionWidth());
         setHeight(textureRegion.getRegionHeight());
 
-        setPosition(x, y);
+        setPosition(x, y, Align.bottom);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(textureRegion, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+    }
+
+    public void updatePosition(float x, float y) {
+        setPosition(x, y, Align.bottom);
     }
 }

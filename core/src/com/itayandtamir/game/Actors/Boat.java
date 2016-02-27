@@ -14,7 +14,7 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 public class Boat extends Actor {
 
     private static final float STARTING_Y_POSITION = FirstGame.WORLD_HEIGHT * 0.15f; //Aligned to the center of the boat
-    private static final float SPEED = 100f;
+    private static final float SPEED = 150f;
     private static final float LANE_SWITCH_DURATION = 0.2f;
 
     private TextureRegion textureRegion;
