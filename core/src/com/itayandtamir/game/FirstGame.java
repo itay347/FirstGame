@@ -2,6 +2,7 @@ package com.itayandtamir.game;
 
 import com.badlogic.gdx.Game;
 import com.itayandtamir.game.Screens.MenuScreen;
+import com.itayandtamir.game.Screens.SplashScreen;
 
 public class FirstGame extends Game {
 
@@ -11,7 +12,7 @@ public class FirstGame extends Game {
     @Override
     public void create() {
         Assets.load();
-        setScreen(new MenuScreen(this));
+        setScreen(new SplashScreen(this));
     }
 
     @Override

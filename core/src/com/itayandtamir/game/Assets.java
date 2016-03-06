@@ -16,6 +16,7 @@ public class Assets {
     public static TextureRegion boat;
     public static TextureRegion obstacleStone;
     public static TextureRegion playButton;
+    public static TextureRegion splash;
 
 
     public static void load() {
@@ -27,6 +28,7 @@ public class Assets {
         boat = atlas.findRegion("Boat");
         obstacleStone = atlas.findRegion("ObstacleStone");
         playButton = atlas.findRegion("PlayButton");
+        splash = atlas.findRegion("SplashImg");
     }
 
     public static void dispose() {

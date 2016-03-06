@@ -39,3 +39,16 @@ PlayButton
   orig: 128, 128
   offset: 0, 0
   index: -1
+
+pack2.png
+size: 512,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+SplashImg
+  rotate: false
+  xy: 2, 2
+  size: 480, 800
+  orig: 480, 800
+  offset: 0, 0
+  index: -1
