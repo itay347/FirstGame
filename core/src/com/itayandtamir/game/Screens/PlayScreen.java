@@ -13,13 +13,15 @@ import com.itayandtamir.game.FirstGame;
 
 public class PlayScreen extends ScreenAdapter {
 
+    private FirstGame game;
     private Stage stage;
 
     private PlayBackgrounds backgrounds;
     private ObstacleGroup obstacles;
     private Boat boat;
 
-    public PlayScreen() {
+    public PlayScreen(FirstGame firstGame) {
+        this.game = firstGame;
         stage = new Stage(new StretchViewport(FirstGame.WORLD_WIDTH, FirstGame.WORLD_HEIGHT), Assets.batch);
 
         backgrounds = new PlayBackgrounds();
@@ -38,6 +40,7 @@ public class PlayScreen extends ScreenAdapter {
 //        Gdx.gl.glClearColor(1, 1, 1, 1);
 //        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.act(delta);
+        checkCollisions();
         stage.draw();
     }
 
@@ -61,5 +64,13 @@ public class PlayScreen extends ScreenAdapter {
                 return false;
             }
         }));
+    }
+
+    private void checkCollisions() {
+        if (obstacles.isCollidingWithBoat(boat))
+        {
+            //TODO: change what happens here
+            game.setScreen(new MenuScreen(game));
+        }
     }
 }

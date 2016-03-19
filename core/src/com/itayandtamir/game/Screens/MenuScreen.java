@@ -14,6 +14,7 @@ import com.itayandtamir.game.Assets;
 import com.itayandtamir.game.FirstGame;
 
 public class MenuScreen extends ScreenAdapter {
+
     private FirstGame game;
     private Stage stage;
 
@@ -30,7 +31,7 @@ public class MenuScreen extends ScreenAdapter {
         playButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new PlayScreen());
+                game.setScreen(new PlayScreen(game));
             }
         });
 

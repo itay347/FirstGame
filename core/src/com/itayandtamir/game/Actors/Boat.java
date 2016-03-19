@@ -2,6 +2,7 @@ package com.itayandtamir.game.Actors;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -81,14 +82,16 @@ public class Boat extends Actor {
                         switchingLane = true;
                     }
                 }),
-
                 Actions.moveBy(lane.width * direction, 0, LANE_SWITCH_DURATION),
-
                 run(new Runnable() {
                     @Override
                     public void run() {
                         switchingLane = false;
                     }
                 })));
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(getX(), getY(), getWidth(), getHeight());
     }
 }

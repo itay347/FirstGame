@@ -19,13 +19,11 @@ public class ObstacleGroup extends Group {
     public ObstacleGroup(Stage stage) {
         random = new Random();
         obstacles = new Array<Obstacle>(OBSTACLES_AMOUNT);
-        obstacles.add(new Obstacle(
-                getRandomLane().x,
+        obstacles.add(new Obstacle(getRandomLane().x,
                 stage.getCamera().position.y + stage.getCamera().viewportHeight / 2));
         addActor(obstacles.get(0));
         for (int i = 1; i < OBSTACLES_AMOUNT; i++) {
-            obstacles.add(new Obstacle(
-                    getRandomLane().x,
+            obstacles.add(new Obstacle(getRandomLane().x,
                     obstacles.get(i - 1).getY(Align.top) + getRandomSpacing()));
             addActor(obstacles.get(i));
         }
@@ -38,7 +36,7 @@ public class ObstacleGroup extends Group {
     }
 
     private void updateObstacles() {
-        for (int i =0;i<OBSTACLES_AMOUNT;i++) {
+        for (int i = 0; i < OBSTACLES_AMOUNT; i++) {
             if (obstacles.get(i).getY(Align.top) < getStage().getCamera().position.y - getStage().getCamera().viewportHeight / 2) {
                 obstacles.get(i).updatePosition(getRandomLane().x, getHighestObstacle().getY(Align.top) + getRandomSpacing());
             }
@@ -76,5 +74,13 @@ public class ObstacleGroup extends Group {
             }
         }
         return highestObstacle;
+    }
+
+    public boolean isCollidingWithBoat(Boat boat) {
+        for (Obstacle obstacle : obstacles) {
+            if (obstacle.isCollidingWithBoat(boat))
+                return true;
+        }
+        return false;
     }
 }

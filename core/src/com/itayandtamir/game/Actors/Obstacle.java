@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Align;
 import com.itayandtamir.game.Assets;
+import com.badlogic.gdx.math.Rectangle;
 
 public class Obstacle extends Actor {
 
@@ -25,5 +26,13 @@ public class Obstacle extends Actor {
 
     public void updatePosition(float x, float y) {
         setPosition(x, y, Align.bottom);
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(getX(), getY(), getWidth(), getHeight());
+    }
+
+    public boolean isCollidingWithBoat(Boat boat) {
+        return getBounds().overlaps(boat.getBounds());
     }
 }
