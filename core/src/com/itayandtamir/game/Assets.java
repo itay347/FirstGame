@@ -1,5 +1,7 @@
 package com.itayandtamir.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -17,18 +19,21 @@ public class Assets {
     public static TextureRegion obstacleStone;
     public static TextureRegion playButton;
     public static TextureRegion splash;
-
+    public static BitmapFont font;
 
     public static void load() {
         atlas = new TextureAtlas("pack.atlas");
         batch = new SpriteBatch();
 
+
+        font = new BitmapFont(Gdx.files.internal("font.fnt"));
         backgroundMenu = atlas.findRegion("BackgroundMenu");
         backgroundPlay = atlas.findRegion("BackgroundPlay");
         boat = atlas.findRegion("Boat");
         obstacleStone = atlas.findRegion("ObstacleStone");
         playButton = atlas.findRegion("PlayButton");
         splash = atlas.findRegion("SplashImg");
+
     }
 
     public static void dispose() {

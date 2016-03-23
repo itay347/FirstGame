@@ -1,6 +1,7 @@
 package com.itayandtamir.game;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.itayandtamir.game.Screens.MenuScreen;
 import com.itayandtamir.game.Screens.SplashScreen;
 

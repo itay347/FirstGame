@@ -10,6 +10,7 @@ import com.itayandtamir.game.Actors.ObstacleGroup;
 import com.itayandtamir.game.Actors.PlayBackgrounds;
 import com.itayandtamir.game.Assets;
 import com.itayandtamir.game.FirstGame;
+import com.itayandtamir.game.Scenes.Hud;
 
 public class PlayScreen extends ScreenAdapter {
 
@@ -19,6 +20,7 @@ public class PlayScreen extends ScreenAdapter {
     private PlayBackgrounds backgrounds;
     private ObstacleGroup obstacles;
     private Boat boat;
+    private Hud hud;
 
     public PlayScreen(FirstGame firstGame) {
         this.game = firstGame;
@@ -27,6 +29,7 @@ public class PlayScreen extends ScreenAdapter {
         backgrounds = new PlayBackgrounds();
         obstacles = new ObstacleGroup(stage);
         boat = new Boat();
+        hud = new Hud(Assets.batch);
 
         stage.addActor(backgrounds);
         stage.addActor(obstacles);
@@ -42,6 +45,11 @@ public class PlayScreen extends ScreenAdapter {
         stage.act(delta);
         checkCollisions();
         stage.draw();
+
+        Assets.batch.setProjectionMatrix(hud.stage.getCamera().combined);
+        hud.stage.draw();
+
+
     }
 
     @Override
