@@ -29,7 +29,7 @@ public class PlayScreen extends ScreenAdapter {
         backgrounds = new PlayBackgrounds();
         obstacles = new ObstacleGroup(stage);
         boat = new Boat();
-        hud = new Hud(Assets.batch);
+        hud = new Hud(new StretchViewport(FirstGame.WORLD_WIDTH, FirstGame.WORLD_HEIGHT), Assets.batch);
 
         stage.addActor(backgrounds);
         stage.addActor(obstacles);
@@ -46,8 +46,7 @@ public class PlayScreen extends ScreenAdapter {
         checkCollisions();
         stage.draw();
 
-        Assets.batch.setProjectionMatrix(hud.stage.getCamera().combined);
-        hud.stage.draw();
+        hud.draw();
         hud.update(delta);
         
 
