@@ -12,10 +12,10 @@ import com.itayandtamir.game.Sprites.Obstacle;
 
 public class PlayState extends State {
     private static final int BOAT_Y_AXIS_START = 50;
-    private static final int BOAT_Y_AXIS_OFFSET = FirstGame.HEIGHT / 2 - BOAT_Y_AXIS_START;
-    public static final Rectangle LANE_LEFT = new Rectangle(0, 0, FirstGame.WIDTH / 3, FirstGame.HEIGHT);
-    public static final Rectangle LANE_MIDDLE = new Rectangle(FirstGame.WIDTH / 3, 0, FirstGame.WIDTH / 3, FirstGame.HEIGHT);
-    public static final Rectangle LANE_RIGHT = new Rectangle(FirstGame.WIDTH / 3 * 2, 0, FirstGame.WIDTH / 3, FirstGame.HEIGHT);
+    private static final int BOAT_Y_AXIS_OFFSET = FirstGame.WORLD_HEIGHT / 2 - BOAT_Y_AXIS_START;
+    public static final Rectangle LANE_LEFT = new Rectangle(0, 0, FirstGame.WORLD_WIDTH / 3, FirstGame.WORLD_HEIGHT);
+    public static final Rectangle LANE_MIDDLE = new Rectangle(FirstGame.WORLD_WIDTH / 3, 0, FirstGame.WORLD_WIDTH / 3, FirstGame.WORLD_HEIGHT);
+    public static final Rectangle LANE_RIGHT = new Rectangle(FirstGame.WORLD_WIDTH / 3 * 2, 0, FirstGame.WORLD_WIDTH / 3, FirstGame.WORLD_HEIGHT);
     private static final int OBSTACLE_COUNT = 3;
 //    private static final int OBSTACLE_Y_OFFSET = 50;
 
@@ -32,7 +32,7 @@ public class PlayState extends State {
         backgroundPos2 = new Vector2(0, background.getHeight());
         obstacles = new Array<Obstacle>();
         for (int i = 1; i <= OBSTACLE_COUNT; i++)
-            obstacles.add(new Obstacle(cam.position.y + (FirstGame.HEIGHT / 2) * i));
+            obstacles.add(new Obstacle(cam.position.y + (FirstGame.WORLD_HEIGHT / 2) * i));
     }
 
     @Override
