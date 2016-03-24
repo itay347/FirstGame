@@ -48,7 +48,8 @@ public class PlayScreen extends ScreenAdapter {
 
         Assets.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
-
+        hud.update(delta);
+        
 
     }
 

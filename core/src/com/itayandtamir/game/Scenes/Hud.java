@@ -50,4 +50,13 @@ public class Hud {
 
         stage.addActor(table);
     }
+
+    public void update(float dt){
+        timeCount += dt;
+        if(timeCount >= 1){
+            worldTime++;
+            countLabel.setText(String.format("%03d", worldTime));
+            timeCount = 0;
+        }
+    }
 }
