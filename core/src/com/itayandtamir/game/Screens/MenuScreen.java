@@ -52,7 +52,7 @@ public class MenuScreen extends ScreenAdapter {
                 Gdx.app.exit();
             }
         });
-        background = new Image(Assets.backgroundMenu);
+        background = new Image(Assets.backgroundMenu2);
         stage.addActor(background);
         stage.addActor(button);
         stage.addActor(exitButton);

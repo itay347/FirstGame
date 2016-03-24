@@ -4,14 +4,14 @@ size: 1024,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-BackgroundMenu
+Background-Boat
   rotate: false
   xy: 2, 218
   size: 480, 800
   orig: 480, 800
   offset: 0, 0
   index: -1
-BackgroundPlay
+BackgroundMenu
   rotate: false
   xy: 484, 218
   size: 480, 800
@@ -41,13 +41,20 @@ PlayButton
   index: -1
 
 pack2.png
-size: 512,1024
+size: 1024,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-SplashImg
+BackgroundPlay
   rotate: false
   xy: 2, 2
+  size: 480, 800
+  orig: 480, 800
+  offset: 0, 0
+  index: -1
+SplashImg
+  rotate: false
+  xy: 484, 2
   size: 480, 800
   orig: 480, 800
   offset: 0, 0

@@ -14,6 +14,7 @@ public class Assets {
 
     //Non-Disposeables
     public static TextureRegion backgroundMenu;
+    public static TextureRegion backgroundMenu2;
     public static TextureRegion backgroundPlay;
     public static TextureRegion boat;
     public static TextureRegion obstacleStone;
@@ -28,6 +29,7 @@ public class Assets {
 
         font = new BitmapFont(Gdx.files.internal("font.fnt"));
         backgroundMenu = atlas.findRegion("BackgroundMenu");
+        backgroundMenu2 = atlas.findRegion("Background-Boat");
         backgroundPlay = atlas.findRegion("BackgroundPlay");
         boat = atlas.findRegion("Boat");
         obstacleStone = atlas.findRegion("ObstacleStone");
