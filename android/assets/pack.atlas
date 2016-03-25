@@ -4,25 +4,32 @@ size: 1024,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-BackgroundMenu
+Background-Boat
   rotate: false
-  xy: 2, 218
+  xy: 2, 197
   size: 480, 800
   orig: 480, 800
   offset: 0, 0
   index: -1
-BackgroundPlay
+BackgroundMenu
   rotate: false
-  xy: 484, 218
+  xy: 484, 197
   size: 480, 800
   orig: 480, 800
   offset: 0, 0
   index: -1
 Boat
   rotate: false
-  xy: 132, 111
+  xy: 488, 90
   size: 92, 105
   orig: 92, 105
+  offset: 0, 0
+  index: -1
+Boat-Logo
+  rotate: false
+  xy: 2, 88
+  size: 354, 107
+  orig: 354, 107
   offset: 0, 0
   index: -1
 ObstacleStone
@@ -34,20 +41,27 @@ ObstacleStone
   index: -1
 PlayButton
   rotate: false
-  xy: 2, 88
+  xy: 358, 67
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 
 pack2.png
-size: 512,1024
+size: 1024,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-SplashImg
+BackgroundPlay
   rotate: false
   xy: 2, 2
+  size: 480, 800
+  orig: 480, 800
+  offset: 0, 0
+  index: -1
+SplashImg
+  rotate: false
+  xy: 484, 2
   size: 480, 800
   orig: 480, 800
   offset: 0, 0

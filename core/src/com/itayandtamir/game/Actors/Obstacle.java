@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Obstacle extends Actor {
 
     private TextureRegion textureRegion;
+    private boolean hasPassed;
 
     public Obstacle(float x, float y) {
         textureRegion = Assets.obstacleStone;
@@ -17,6 +18,7 @@ public class Obstacle extends Actor {
         setHeight(textureRegion.getRegionHeight());
 
         setPosition(x, y, Align.bottom);
+        hasPassed = false;
     }
 
     @Override
@@ -34,5 +36,17 @@ public class Obstacle extends Actor {
 
     public boolean isCollidingWithBoat(Boat boat) {
         return getBounds().overlaps(boat.getBounds());
+    }
+
+    public void setHasPassed(boolean hasPassed) {
+        this.hasPassed = hasPassed;
+    }
+
+    public boolean getHasPassed() {
+        return hasPassed;
+    }
+
+    public float getLaneX() {
+        return getX(Align.center);
     }
 }

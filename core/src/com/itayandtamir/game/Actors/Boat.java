@@ -27,6 +27,7 @@ public class Boat extends Actor {
         textureRegion = new TextureRegion(Assets.boat);
         setWidth(textureRegion.getRegionWidth());
         setHeight(textureRegion.getRegionHeight());
+        setName("boat");
 
         velocity = new Vector2(0, SPEED);
         lane = Lane.MIDDLE;
