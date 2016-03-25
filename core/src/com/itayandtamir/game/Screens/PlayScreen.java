@@ -10,7 +10,7 @@ import com.itayandtamir.game.Actors.ObstacleGroup;
 import com.itayandtamir.game.Actors.PlayBackgrounds;
 import com.itayandtamir.game.Assets;
 import com.itayandtamir.game.FirstGame;
-import com.itayandtamir.game.Scenes.Hud;
+import com.itayandtamir.game.Screens.Stages.PlayHud;
 
 public class PlayScreen extends ScreenAdapter {
 
@@ -20,16 +20,16 @@ public class PlayScreen extends ScreenAdapter {
     private PlayBackgrounds backgrounds;
     private ObstacleGroup obstacles;
     private Boat boat;
-    private Hud hud;
+    private PlayHud playHud;
 
     public PlayScreen(FirstGame firstGame) {
         this.game = firstGame;
         stage = new Stage(new StretchViewport(FirstGame.WORLD_WIDTH, FirstGame.WORLD_HEIGHT), Assets.batch);
+        playHud = new PlayHud(new StretchViewport(FirstGame.WORLD_WIDTH, FirstGame.WORLD_HEIGHT), Assets.batch);
 
         backgrounds = new PlayBackgrounds();
         obstacles = new ObstacleGroup(stage);
         boat = new Boat();
-        hud = new Hud(new StretchViewport(FirstGame.WORLD_WIDTH, FirstGame.WORLD_HEIGHT), Assets.batch);
 
         stage.addActor(backgrounds);
         stage.addActor(obstacles);
@@ -46,9 +46,9 @@ public class PlayScreen extends ScreenAdapter {
         checkCollisions();
         stage.draw();
 
-        hud.draw();
-        hud.update(delta);
-        
+        playHud.draw();
+        playHud.update(delta);
+
 
     }
 
@@ -56,6 +56,7 @@ public class PlayScreen extends ScreenAdapter {
     public void dispose() {
         super.dispose();
         stage.dispose();
+        playHud.dispose();
     }
 
     private void initInputProcessor() {
@@ -75,8 +76,7 @@ public class PlayScreen extends ScreenAdapter {
     }
 
     private void checkCollisions() {
-        if (obstacles.isCollidingWithBoat(boat))
-        {
+        if (obstacles.isCollidingWithBoat(boat)) {
             //TODO: change what happens here
             game.setScreen(new MenuScreen(game));
         }

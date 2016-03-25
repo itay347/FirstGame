@@ -5,12 +5,14 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class Assets {
 
     //Disposeables
     public static TextureAtlas atlas;
     public static SpriteBatch batch;
+    public static Skin skin;
 
     //Non-Disposeables
     public static TextureRegion backgroundMenu;
@@ -20,14 +22,13 @@ public class Assets {
     public static TextureRegion obstacleStone;
     public static TextureRegion playButton;
     public static TextureRegion splash;
-    public static BitmapFont font;
 
     public static void load() {
         atlas = new TextureAtlas("pack.atlas");
         batch = new SpriteBatch();
+//        font = new BitmapFont(Gdx.files.internal("fonts/font.fnt"));
+        skin = new Skin(Gdx.files.internal("skins/skin.json"));
 
-
-        font = new BitmapFont(Gdx.files.internal("font.fnt"));
         backgroundMenu = atlas.findRegion("BackgroundMenu");
         backgroundMenu2 = atlas.findRegion("Background-Boat");
         backgroundPlay = atlas.findRegion("BackgroundPlay");
@@ -41,6 +42,7 @@ public class Assets {
     public static void dispose() {
         if (atlas != null) atlas.dispose();
         if (batch != null) batch.dispose();
+        if (skin != null) skin.dispose();
     }
 
 }
