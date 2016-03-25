@@ -1,7 +1,6 @@
 package com.itayandtamir.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -27,7 +26,6 @@ public class Assets {
     public static void load() {
         atlas = new TextureAtlas("pack.atlas");
         batch = new SpriteBatch();
-//        font = new BitmapFont(Gdx.files.internal("fonts/font.fnt"));
         skin = new Skin(Gdx.files.internal("skins/skin.json"));
 
         backgroundMenu = atlas.findRegion("BackgroundMenu");
