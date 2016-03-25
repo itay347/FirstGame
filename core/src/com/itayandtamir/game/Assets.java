@@ -1,7 +1,6 @@
 package com.itayandtamir.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,7 +14,9 @@ public class Assets {
     public static Skin skin;
 
     //Non-Disposeables
+    public static TextureRegion pauseButton;
     public static TextureRegion backgroundMenu;
+    public static TextureRegion backgroundPause;
     public static TextureRegion logo;
     public static TextureRegion backgroundMenu2;
     public static TextureRegion backgroundPlay;
@@ -27,10 +28,11 @@ public class Assets {
     public static void load() {
         atlas = new TextureAtlas("pack.atlas");
         batch = new SpriteBatch();
-//        font = new BitmapFont(Gdx.files.internal("fonts/font.fnt"));
         skin = new Skin(Gdx.files.internal("skins/skin.json"));
 
+        pauseButton = atlas.findRegion("pauseButton");
         backgroundMenu = atlas.findRegion("BackgroundMenu");
+        backgroundPause = atlas.findRegion("backgroundPause");
         backgroundMenu2 = atlas.findRegion("Background-Boat");
         logo = atlas.findRegion("Boat-Logo");
         backgroundPlay = atlas.findRegion("BackgroundPlay");

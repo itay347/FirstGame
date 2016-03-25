@@ -1,8 +1,8 @@
 {
     com.badlogic.gdx.graphics.g2d.BitmapFont: {
         default-font: { file: fonts/default.fnt },
-        play-hud-font: { file: fonts/font.fnt }
-
+        play-hud-font: { file: fonts/font.fnt },
+        timeBurnerBold-font: { file: fonts/TimeBurnerBold.fnt }
     },
     com.badlogic.gdx.graphics.Color: {
         green: { a: 1, b: 0, g: 1, r: 0 },
@@ -50,7 +50,7 @@
     },
     com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
         default: { font: default-font, fontColor: white },
-        play-hud: { font: play-hud-font, fontColor: white }
+        play-hud: { font: timeBurnerBold-font, fontColor: white }
 
     },
     com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
