@@ -36,6 +36,11 @@ public class PlayHud extends Stage {
     }
 
     public void update(float dt) {
+        scoreCount += dt;
+        if (scoreCount >= 1) {
+            score++;
+            scoreCountLabel.setText(String.format("%03d", score));
+            scoreCount = 0;
         }
-
+    }
 }
