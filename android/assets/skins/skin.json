@@ -1,7 +1,6 @@
 {
     com.badlogic.gdx.graphics.g2d.BitmapFont: {
         default-font: { file: fonts/default.fnt },
-        play-hud-font: { file: fonts/font.fnt },
         timeBurnerBold-font: { file: fonts/TimeBurnerBold.fnt }
     },
     com.badlogic.gdx.graphics.Color: {

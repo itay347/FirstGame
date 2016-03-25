@@ -18,7 +18,6 @@ public class Assets {
     public static TextureRegion backgroundMenu;
     public static TextureRegion backgroundPause;
     public static TextureRegion logo;
-    public static TextureRegion backgroundMenu2;
     public static TextureRegion backgroundPlay;
     public static TextureRegion boat;
     public static TextureRegion obstacleStone;
@@ -33,14 +32,12 @@ public class Assets {
         pauseButton = atlas.findRegion("pauseButton");
         backgroundMenu = atlas.findRegion("BackgroundMenu");
         backgroundPause = atlas.findRegion("backgroundPause");
-        backgroundMenu2 = atlas.findRegion("Background-Boat");
         logo = atlas.findRegion("Boat-Logo");
         backgroundPlay = atlas.findRegion("BackgroundPlay");
         boat = atlas.findRegion("Boat");
         obstacleStone = atlas.findRegion("ObstacleStone");
         playButton = atlas.findRegion("PlayButton");
         splash = atlas.findRegion("SplashImg");
-
     }
 
     public static void dispose() {

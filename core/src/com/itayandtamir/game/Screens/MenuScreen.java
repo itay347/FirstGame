@@ -21,7 +21,7 @@ public class MenuScreen extends ScreenAdapter {
     public MenuScreen(FirstGame firstGame) {
         this.game = firstGame;
         stage = new Stage(new StretchViewport(FirstGame.WORLD_WIDTH, FirstGame.WORLD_HEIGHT), Assets.batch);
-        final Image background = new Image(Assets.backgroundMenu2);
+        final Image background = new Image(Assets.backgroundMenu);
         final Image logo = new Image(Assets.logo);
         logo.setPosition(FirstGame.WORLD_WIDTH / 2, FirstGame.WORLD_HEIGHT * 0.8f, Align.center);
 
