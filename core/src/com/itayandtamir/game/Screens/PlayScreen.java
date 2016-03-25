@@ -28,7 +28,7 @@ public class PlayScreen extends ScreenAdapter {
         playHud = new PlayHud(new StretchViewport(FirstGame.WORLD_WIDTH, FirstGame.WORLD_HEIGHT), Assets.batch);
 
         backgrounds = new PlayBackgrounds();
-        obstacles = new ObstacleGroup(stage);
+        obstacles = new ObstacleGroup(stage, playHud);
         boat = new Boat();
 
         stage.addActor(backgrounds);

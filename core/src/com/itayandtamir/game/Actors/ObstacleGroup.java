@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
+import com.itayandtamir.game.Screens.Stages.PlayHud;
 
 import java.util.Random;
 
@@ -15,11 +16,13 @@ public class ObstacleGroup extends Group {
 
     private Random random;
     private Array<Obstacle> obstacles;
+    private PlayHud hud;
 
-    public ObstacleGroup(Stage stage) {
+    public ObstacleGroup(Stage stage, PlayHud hud) {
+        this.hud = hud;
         random = new Random();
         obstacles = new Array<Obstacle>(OBSTACLES_AMOUNT);
-        obstacles.add(new Obstacle(getRandomLane().x,
+        obstacles.add(new Obstacle(getFirstRandomLane().x,
                 stage.getCamera().position.y + stage.getCamera().viewportHeight / 2));
         addActor(obstacles.get(0));
         for (int i = 1; i < OBSTACLES_AMOUNT; i++) {
@@ -37,8 +40,13 @@ public class ObstacleGroup extends Group {
 
     private void updateObstacles() {
         for (int i = 0; i < OBSTACLES_AMOUNT; i++) {
+            if (obstacles.get(i).getY(Align.center) <= getParent().findActor("boat").getY(Align.center) && !obstacles.get(i).getHasPassed()) {
+                obstacles.get(i).setHasPassed(true);
+                hud.addScore(10);
+            }
             if (obstacles.get(i).getY(Align.top) < getStage().getCamera().position.y - getStage().getCamera().viewportHeight / 2) {
                 obstacles.get(i).updatePosition(getRandomLane().x, getHighestObstacle().getY(Align.top) + getRandomSpacing());
+                obstacles.get(i).setHasPassed(false);
             }
         }
     }
@@ -48,8 +56,9 @@ public class ObstacleGroup extends Group {
         super.draw(batch, parentAlpha);
     }
 
-    private Lane getRandomLane() {
+    private Lane getFirstRandomLane() {
         int randLane = random.nextInt(3);
+
         switch (randLane) {
             case 0:
                 return Lane.LEFT;
@@ -60,6 +69,36 @@ public class ObstacleGroup extends Group {
             default:
                 return Lane.MIDDLE;
         }
+    }
+
+    private Lane getRandomLane() {
+        int randLane = random.nextInt(2);
+        float lastLaneX = getHighestObstacle().getLaneX();
+
+        if (lastLaneX == Lane.LEFT.x) {
+            switch (randLane) {
+                case 0:
+                    return Lane.MIDDLE;
+                case 1:
+                    return Lane.RIGHT;
+            }
+        } else if (lastLaneX == Lane.MIDDLE.x) {
+            switch (randLane) {
+                case 0:
+                    return Lane.LEFT;
+                case 1:
+                    return Lane.RIGHT;
+            }
+        } else { //Lane.RIGHT
+            switch (randLane) {
+                case 0:
+                    return Lane.MIDDLE;
+                case 1:
+                    return Lane.LEFT;
+            }
+        }
+
+        return Lane.MIDDLE;
     }
 
     private float getRandomSpacing() {

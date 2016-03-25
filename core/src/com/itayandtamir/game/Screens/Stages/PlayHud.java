@@ -8,8 +8,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.itayandtamir.game.Assets;
 
 public class PlayHud extends Stage {
-    private Integer score;
-    private float scoreCount;
+    private int score;
+    private float timeCount;
 
     Label scoreLabel;
     Label scoreCountLabel;
@@ -17,7 +17,7 @@ public class PlayHud extends Stage {
     public PlayHud(Viewport viewport, SpriteBatch batch) {
         super(viewport, batch);
         score = 0;
-        scoreCount = 0;
+        timeCount = 0;
 
         Table table = new Table();
         table.top();
@@ -36,11 +36,16 @@ public class PlayHud extends Stage {
     }
 
     public void update(float dt) {
-        scoreCount += dt;
-        if (scoreCount >= 1) {
+        timeCount += dt;
+        if (timeCount >= 1) {
             score++;
             scoreCountLabel.setText(String.format("%03d", score));
-            scoreCount = 0;
+            timeCount = 0;
         }
+    }
+
+    public void addScore(int addition) {
+        score += addition;
+        scoreCountLabel.setText(String.format("%03d", score));
     }
 }
