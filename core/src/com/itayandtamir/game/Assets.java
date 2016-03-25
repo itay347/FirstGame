@@ -14,7 +14,9 @@ public class Assets {
     public static Skin skin;
 
     //Non-Disposeables
+    public static TextureRegion pauseButton;
     public static TextureRegion backgroundMenu;
+    public static TextureRegion backgroundPause;
     public static TextureRegion logo;
     public static TextureRegion backgroundMenu2;
     public static TextureRegion backgroundPlay;
@@ -28,7 +30,9 @@ public class Assets {
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("skins/skin.json"));
 
+        pauseButton = atlas.findRegion("pauseButton");
         backgroundMenu = atlas.findRegion("BackgroundMenu");
+        backgroundPause = atlas.findRegion("backgroundPause");
         backgroundMenu2 = atlas.findRegion("Background-Boat");
         logo = atlas.findRegion("Boat-Logo");
         backgroundPlay = atlas.findRegion("BackgroundPlay");

@@ -5,7 +5,16 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.input.GestureDetector;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.itayandtamir.game.Actors.Boat;
 import com.itayandtamir.game.Actors.ObstacleGroup;
@@ -15,7 +24,6 @@ import com.itayandtamir.game.FirstGame;
 import com.itayandtamir.game.Screens.Stages.PlayHud;
 
 public class PlayScreen extends ScreenAdapter {
-
     private FirstGame game;
     private Stage stage;
 
@@ -35,13 +43,17 @@ public class PlayScreen extends ScreenAdapter {
         stage = new Stage(new StretchViewport(FirstGame.WORLD_WIDTH, FirstGame.WORLD_HEIGHT), Assets.batch);
         playHud = new PlayHud(new StretchViewport(FirstGame.WORLD_WIDTH, FirstGame.WORLD_HEIGHT), Assets.batch, firstGame);
 
+
         backgrounds = new PlayBackgrounds();
         obstacles = new ObstacleGroup(stage, playHud);
         boat = new Boat();
 
+
         stage.addActor(backgrounds);
         stage.addActor(obstacles);
         stage.addActor(boat);
+
+
 
         initInputProcessor();
 

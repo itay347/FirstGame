@@ -46,6 +46,13 @@ PlayButton
   orig: 128, 128
   offset: 0, 0
   index: -1
+pauseButton
+  rotate: false
+  xy: 966, 977
+  size: 21, 20
+  orig: 21, 20
+  offset: 0, 0
+  index: -1
 
 pack2.png
 size: 1024,1024
@@ -64,5 +71,18 @@ SplashImg
   xy: 484, 2
   size: 480, 800
   orig: 480, 800
+  offset: 0, 0
+  index: -1
+
+pack3.png
+size: 256,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+backgroundPause
+  rotate: false
+  xy: 2, 2
+  size: 240, 400
+  orig: 240, 400
   offset: 0, 0
   index: -1
