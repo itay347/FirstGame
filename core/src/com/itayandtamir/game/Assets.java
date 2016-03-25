@@ -16,6 +16,7 @@ public class Assets {
 
     //Non-Disposeables
     public static TextureRegion backgroundMenu;
+    public static TextureRegion logo;
     public static TextureRegion backgroundMenu2;
     public static TextureRegion backgroundPlay;
     public static TextureRegion boat;
@@ -31,6 +32,7 @@ public class Assets {
 
         backgroundMenu = atlas.findRegion("BackgroundMenu");
         backgroundMenu2 = atlas.findRegion("Background-Boat");
+        logo = atlas.findRegion("Boat-Logo");
         backgroundPlay = atlas.findRegion("BackgroundPlay");
         boat = atlas.findRegion("Boat");
         obstacleStone = atlas.findRegion("ObstacleStone");

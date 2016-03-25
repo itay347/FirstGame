@@ -2,6 +2,8 @@ package com.itayandtamir.game.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -22,26 +24,19 @@ public class MenuScreen extends ScreenAdapter {
     public MenuScreen(FirstGame firstGame) {
         this.game = firstGame;
         stage = new Stage(new StretchViewport(FirstGame.WORLD_WIDTH, FirstGame.WORLD_HEIGHT), Assets.batch);
-
         final Image background = new Image(Assets.backgroundMenu2);
+        final Image logo = new Image(Assets.logo);
+        logo.setPosition(FirstGame.WORLD_WIDTH / 2, FirstGame.WORLD_HEIGHT * 0.8f, Align.center);
 
         Table table = new Table();
         table.setFillParent(true);
         table.align(Align.center);
-        table.setDebug(true);
 
-        final Label title = new Label("Boat", Assets.skin, "default");
-        title.setFontScale(3);
 
-        final TextButton playButton = new TextButton("Start Game", Assets.skin, "default");
-        final TextButton exitButton = new TextButton("Exit Game", Assets.skin, "default");
-        //Buttons
-        playButton.setWidth(200);
-        playButton.setHeight(50);
-//        playButton.setPosition(FirstGame.WORLD_WIDTH / 2, FirstGame.WORLD_HEIGHT / 2, Align.center);
-        exitButton.setWidth(200);
-        exitButton.setHeight(50);
-//        exitButton.setPosition(FirstGame.WORLD_WIDTH / 2, FirstGame.WORLD_HEIGHT / 2 - 80, Align.center);
+        //region Buttons
+
+        final TextButton playButton = new TextButton("Start Game", Assets.skin, "menu");
+        final TextButton exitButton = new TextButton("Exit Game", Assets.skin, "menu");
 
         playButton.addListener(new ClickListener() {
             @Override
@@ -55,14 +50,16 @@ public class MenuScreen extends ScreenAdapter {
                 Gdx.app.exit();
             }
         });
+        //endregion
 
-
+        //region Adding Actors
         stage.addActor(background);
+        stage.addActor(logo);
         stage.addActor(table);
 
-        table.add(title).size(100, 100).pad(75).row();
-        table.add(playButton).size(400, 100).pad(20).row();
-        table.add(exitButton).size(400, 100).pad(20);
+        table.add(playButton).size(200, 50).pad(20).row();
+        table.add(exitButton).size(200, 50).pad(20);
+        //endregion
 
         Gdx.input.setInputProcessor(stage);
     }
