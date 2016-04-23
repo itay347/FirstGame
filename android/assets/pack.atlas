@@ -6,44 +6,51 @@ filter: Nearest,Nearest
 repeat: none
 BackgroundMenu
   rotate: false
-  xy: 2, 197
+  xy: 2, 149
   size: 480, 800
   orig: 480, 800
   offset: 0, 0
   index: -1
 BackgroundPlay
   rotate: false
-  xy: 484, 197
+  xy: 484, 149
   size: 480, 800
   orig: 480, 800
   offset: 0, 0
   index: -1
 Boat
   rotate: false
-  xy: 358, 90
+  xy: 477, 42
   size: 92, 105
   orig: 92, 105
   offset: 0, 0
   index: -1
 Boat-Logo
   rotate: false
-  xy: 2, 88
+  xy: 2, 40
   size: 354, 107
   orig: 354, 107
   offset: 0, 0
   index: -1
 ObstacleStone
   rotate: false
-  xy: 2, 2
+  xy: 358, 63
   size: 117, 84
   orig: 117, 84
   offset: 0, 0
   index: -1
 pauseButton
   rotate: false
-  xy: 966, 977
+  xy: 966, 929
   size: 21, 20
   orig: 21, 20
+  offset: 0, 0
+  index: -1
+resume
+  rotate: false
+  xy: 2, 2
+  size: 192, 36
+  orig: 192, 36
   offset: 0, 0
   index: -1
 
