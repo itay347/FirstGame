@@ -14,15 +14,12 @@ public class Assets {
     public static Skin skin;
 
     //Non-Disposeables
-    public static TextureRegion resume;
     public static TextureRegion pauseButton;
     public static TextureRegion backgroundMenu;
-    public static TextureRegion backgroundPause;
     public static TextureRegion logo;
     public static TextureRegion backgroundPlay;
     public static TextureRegion boat;
     public static TextureRegion obstacleStone;
-    public static TextureRegion playButton;
     public static TextureRegion splash;
 
     public static void load() {
@@ -30,15 +27,12 @@ public class Assets {
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("skins/skin.json"));
 
-        resume = atlas.findRegion("resume");
         pauseButton = atlas.findRegion("pauseButton");
         backgroundMenu = atlas.findRegion("BackgroundMenu");
-        backgroundPause = atlas.findRegion("backgroundPause");
         logo = atlas.findRegion("Boat-Logo");
         backgroundPlay = atlas.findRegion("BackgroundPlay");
         boat = atlas.findRegion("Boat");
         obstacleStone = atlas.findRegion("ObstacleStone");
-        playButton = atlas.findRegion("PlayButton");
         splash = atlas.findRegion("SplashImg");
     }
 

@@ -4,19 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.input.GestureDetector;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.itayandtamir.game.Actors.Boat;
 import com.itayandtamir.game.Actors.ObstacleGroup;
@@ -25,20 +14,14 @@ import com.itayandtamir.game.Assets;
 import com.itayandtamir.game.FirstGame;
 import com.itayandtamir.game.Screens.Stages.PlayHud;
 
-import java.security.AllPermission;
-
 public class PlayScreen extends ScreenAdapter {
     private FirstGame game;
-    public static Stage stage;
+    public Stage stage;
 
-    public static Image image;
     private PlayBackgrounds backgrounds;
     private ObstacleGroup obstacles;
     private Boat boat;
     private PlayHud playHud;
-    Vector3 touchPos;
-    Rectangle resumeRec;
-
 
     public enum GameState {
         Play, Pause, Dead
@@ -50,13 +33,7 @@ public class PlayScreen extends ScreenAdapter {
         this.game = firstGame;
         stage = new Stage(new StretchViewport(FirstGame.WORLD_WIDTH, FirstGame.WORLD_HEIGHT), Assets.batch);
         playHud = new PlayHud(new StretchViewport(FirstGame.WORLD_WIDTH, FirstGame.WORLD_HEIGHT), Assets.batch, firstGame);
-        touchPos = new Vector3();
-        resumeRec = new Rectangle();
-        resumeRec.setSize(192, 36);
 
-        image = new Image(Assets.resume);
-
-        image.setSize(192, 36);
         backgrounds = new PlayBackgrounds();
         obstacles = new ObstacleGroup(stage, playHud);
         boat = new Boat();
@@ -65,9 +42,7 @@ public class PlayScreen extends ScreenAdapter {
         stage.addActor(obstacles);
         stage.addActor(boat);
 
-
         initInputProcessor();
-
         gameState = GameState.Play;
     }
 
@@ -77,11 +52,8 @@ public class PlayScreen extends ScreenAdapter {
             case Play:
                 stage.act(delta);
                 checkCollisions();
-                playHud.updateScoreLabel(delta);
-                updateLocation(delta);
             case Pause:
-                //PlayHud.pauseWindow.setVisible(true);
-                gamePaused();
+
             case Dead:
                 stage.draw();
                 playHud.act(delta);
@@ -132,22 +104,5 @@ public class PlayScreen extends ScreenAdapter {
             playHud.gameover();
         }
     }
-
-    public void gamePaused() {
-        if (Gdx.input.justTouched()) {
-            stage.getCamera().unproject(touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0));
-
-            if (resumeRec.contains(touchPos.x, touchPos.y)) {
-                PlayScreen.gameState = PlayScreen.GameState.Play;
-                image.remove();
-            }
-        }
-    }
-
-    public void updateLocation(float delta) {
-        image.setPosition(stage.getCamera().position.x - image.getWidth() / 2, stage.getCamera().position.y);
-        resumeRec.setPosition(stage.getCamera().position.x - image.getWidth() / 2, stage.getCamera().position.y);
-    }
-
 }
 

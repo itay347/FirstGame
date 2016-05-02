@@ -29,9 +29,7 @@ public class MenuScreen extends ScreenAdapter {
         table.setFillParent(true);
         table.align(Align.center);
 
-
         //region Buttons
-
         final TextButton playButton = new TextButton("Start Game", Assets.skin, "menu");
         final TextButton exitButton = new TextButton("Exit Game", Assets.skin, "menu");
 
